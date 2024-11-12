@@ -23,7 +23,7 @@ jobs:
                     "npx http-server storybook-static --port 6006 --silent" \
                     "npx wait-on tcp:127.0.0.1:6006 && yarn test-storybook"
     chromatic:
-        needs: test
+        needs: accessibility-test
         name: Run Chromatic
         runs-on: ubuntu-latest
         steps:
