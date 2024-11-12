@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { Calendar } from "@/components/calendar";
 import { useState } from "react";
+import { action } from "@storybook/addon-actions";
 
 const meta = {
     title: "Calendar",
@@ -14,6 +15,14 @@ const meta = {
         className: {
             control: "text",
             description: "Custom Style to className",
+        },
+        selected: {
+            control: "date",
+            description: "날짜는 객체 Date로 받습니다.",
+        },
+        onSelect: {
+            action: "selected",
+            description: "Date select handler",
         },
         showOutsideDays: {
             control: "boolean",
@@ -36,7 +45,10 @@ const SingleCalendarWrapper = (args: React.ComponentProps<typeof Calendar>) => {
             {...args}
             mode="single"
             selected={selectedDate}
-            onSelect={(date) => setSelectedDate(date as Date)}
+            onSelect={(date) => {
+                action("selected")(date);
+                setSelectedDate(date);
+            }}
         />
     );
 };
