@@ -65,6 +65,6 @@ export const Default: Story = {
         size: "sm",
         children: "Default Button",
         className: "text-blue",
-        asChild: true,
+        asChild: false,
     },
 };
