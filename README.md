@@ -15,7 +15,7 @@ npm install design-system-whisperit
 After installation, you must import the main CSS file in your project to access the full range of styles provided by Tailwind CSS. Add the following line to the root of your project such as `App.tsx` or `main.tsx`:
 
 ```javascript
-import "design-system-whisperit/index.css";
+import "design-system-whisperit/styles";
 ```
 
 And then you can import components from `design-system-whisperit` directly like below
