@@ -6,9 +6,16 @@ import { viteStaticCopy } from "vite-plugin-static-copy";
 
 // https://vite.dev/config/
 export default defineConfig({
+    resolve: {
+        alias: {
+            "@": path.resolve(__dirname, "src"),
+        },
+    },
     plugins: [
         react(),
-        dts(),
+        dts({
+            tsconfigPath: "./tsconfig.build.json",
+        }),
         viteStaticCopy({
             targets: [
                 {
@@ -20,9 +27,10 @@ export default defineConfig({
     ],
     build: {
         lib: {
-            entry: path.resolve(__dirname, "src/components/index.tsx"),
+            entry: path.resolve(__dirname, "src/index.tsx"),
             fileName: (format) => `index.${format}.js`,
             name: "design-system-whisperit",
+            formats: ["es", "cjs"],
         },
         rollupOptions: {
             external: ["react", "react-dom"],

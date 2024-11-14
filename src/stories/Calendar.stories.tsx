@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Calendar } from "../components/calendar";
+import { Calendar } from "@/components/Calendar";
 import { useState } from "react";
 import { action } from "@storybook/addon-actions";
 

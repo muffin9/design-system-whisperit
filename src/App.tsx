@@ -1,5 +1,5 @@
-import { Button } from "@/components/button";
-import { Calendar } from "./components/calendar";
+import { Button } from "./components/Button";
+import { Calendar } from "./components/Calendar";
 import React from "react";
 
 function App() {
