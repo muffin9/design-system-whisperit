@@ -5,11 +5,10 @@ import React from "react";
 import { X } from "lucide-react";
 
 interface BottomDrawerProps {
-    isOpen: boolean;
-    onOpenChange: (isOpen: boolean) => void;
+    triggerElement: React.ReactNode;
     title?: string;
     description?: string;
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 const Drawer = ({
@@ -24,6 +23,8 @@ const Drawer = ({
 Drawer.displayName = "Drawer";
 
 const DrawerPortal = DrawerPrimitive.Portal;
+
+const DrawerTrigger = DrawerPrimitive.Trigger;
 
 const DrawerClose = DrawerPrimitive.Close;
 
@@ -110,13 +111,13 @@ const DrawerDescription = React.forwardRef<
 DrawerDescription.displayName = DrawerPrimitive.Description.displayName;
 
 const BottomDrawer = ({
-    isOpen,
-    onOpenChange,
+    triggerElement,
     title,
     description,
     children,
 }: BottomDrawerProps) => (
-    <Drawer open={isOpen} onOpenChange={onOpenChange}>
+    <Drawer>
+        <DrawerTrigger>{triggerElement}</DrawerTrigger>
         <DrawerContent>
             <DrawerClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
                 <X className="h-4 w-4" />

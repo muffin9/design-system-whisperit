@@ -4,13 +4,14 @@ import React, { ReactNode } from "react";
 import { X } from "lucide-react";
 
 interface ModalProps {
-    isOpen: boolean;
-    onOpenChange: (isOpen: boolean) => void;
     title: string;
-    children: ReactNode;
+    triggerElement: React.ReactNode;
+    children?: ReactNode;
 }
 
 const Dialog = DialogPrimitive.Root;
+
+const DialogTrigger = DialogPrimitive.Trigger;
 
 const DialogPortal = DialogPrimitive.Portal;
 
@@ -70,8 +71,9 @@ const DialogTitle = React.forwardRef<
 ));
 DialogTitle.displayName = DialogPrimitive.Title.displayName;
 
-const Modal = ({ isOpen, onOpenChange, title, children }: ModalProps) => (
-    <Dialog open={isOpen} onOpenChange={onOpenChange}>
+const Modal = ({ title, triggerElement, children }: ModalProps) => (
+    <Dialog>
+        <DialogTrigger asChild>{triggerElement}</DialogTrigger>
         <DialogPortal>
             <DialogOverlay />
             <DialogContent>
