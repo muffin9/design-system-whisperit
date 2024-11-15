@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import React, { ReactNode } from "react";
+import { X } from "lucide-react";
 
 interface ModalProps {
     isOpen: boolean;
@@ -31,7 +32,7 @@ const DialogOverlay = React.forwardRef<
     <DialogPrimitive.Overlay
         ref={ref}
         className={cn(
-            "fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+            "fixed inset-0 z-50 bg-black/30 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
             className
         )}
         {...props}
@@ -74,7 +75,9 @@ const Modal = ({ isOpen, onOpenChange, title, children }: ModalProps) => (
         <DialogPortal>
             <DialogOverlay />
             <DialogContent>
-                <DialogClose>X</DialogClose>
+                <DialogClose>
+                    <X className="h-4 w-4" />
+                </DialogClose>
                 <DialogTitle>{title}</DialogTitle>
                 {children}
             </DialogContent>

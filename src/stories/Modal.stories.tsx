@@ -8,15 +8,12 @@ const meta = {
     component: Modal,
     parameters: {
         layout: "centered",
+        docs: { disable: true },
     },
     tags: ["autodocs"],
     decorators: [
         (Story) => (
-            <div
-                style={{
-                    background: "orange",
-                }}
-            >
+            <div>
                 <Story />
             </div>
         ),
@@ -25,7 +22,7 @@ const meta = {
         isOpen: {
             control: "boolean",
             description: "모달의 열림/닫힘 상태를 제어",
-            defaultValue: true,
+            defaultValue: false,
         },
         title: {
             control: "text",
